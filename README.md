@@ -2,7 +2,7 @@
 Reviving Retro Turntable
 
 ### Preamble
-<img src="./figs/lp.png"></img>
+<img src="./figs/lp.png" width=50%></img>
 
 I was asked if I could fix the above Turntable which refused to turn on and play 
 any records. At the start I thought it should be reasonably simple fix given there
