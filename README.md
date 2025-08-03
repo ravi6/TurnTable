@@ -124,7 +124,8 @@ output. Knowing this fix will bring the LP player to life, but will not resurrec
 from USB, I fed the preamp signals directly to the amplifier. I
 
 ###  Music To My Ears
-[![listen](https://i.sstatic.net/q3ceS.png)](https://youtube.com/shorts/5XMtKkJkuiA?feature=share" Everything Is AWESOME")
+<img src="./figs/icon.png" width=50%></img>
+[![ Click Here listen])](https://www.youtube.com/shorts/5XMtKkJkuiA)
 
 With the above fix, I could enjoy the old Bengali songs with good sound which can be controlled. Given the Micro Processor used
 is proprietary I am not sure I could have done any better. In the end the whole exercise has been educational albeit with lot
