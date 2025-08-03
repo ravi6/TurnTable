@@ -131,3 +131,15 @@ With the above fix, I could enjoy the old Bengali songs with good sound which ca
 is proprietary I am not sure I could have done any better. In the end the whole exercise has been educational albeit with lot
 of strain on my eyes and neck. But it certainly kept my mind off the severe flu symptoms I had to endure during the whole time while
 on sick leave.  I hope my niece would enjoy using the device for all the effort that has gone into it.
+
+
+### Technical Summary
+✅ Reverse-engineered signal paths from minimal information
+
+✅ Diagnosed and restored a faulty boost converter
+
+✅ Isolated the microcontroller's failing influence
+
+✅ Confirmed the audio chain up to the amp
+
+✅ Rewired the audio feed for proper volume control
