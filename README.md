@@ -98,5 +98,35 @@ Overall the whole system consists of these components
 ### The Penny Drops In
 Took me a while to trace most of the circuit out and now have begun to understand that final amplifier IC 4863
 is not receiving the preamplified signal based on signals measured with oscilloscope. It appeared as though
-unamplified stylus signal is reaching. That aside, despite my several attempts to trace the input signal lines of
-the final amplifier chip to the source which should be the Mux chip output 
+unamplified stylus signal is reaching it. That aside, despite my several attempts to trace the input signal lines of
+the final amplifier chip to the source that I anticipated should be the output from Mux chip did not succeed. In fact
+tracing the external pin connections from any of the IC's on the board could not be traced  back to the input of the
+final amplifier. And yet it seems to be getting weak signal of the stylus from nowhere. CHATGPT suggested it could be simply
+capacitive coupling artifact. At this stage a suggestion was made to see if  the final amplifier health should be checked with
+independant signal from another audio source and see if it gets correctly amplifier.
+
+Used my laptop to get the audio signal from head phone jack and I fed that to the final amplifier inputs at the
+volume control wiper taps for both audio channels. Lo and behold I get a solid sound from the speakers playing the
+sound source from my laptop. So this confirmed my preamp and final amplifiers are a OK. It is just the amplified stylus
+signal is not reaching final amplifier input. Checking the Mux select lines (pin 9 and 10 of Mux IC) d confirmed that the micro
+is selecting aux input rather than preamp output. So tried forcing the mux select lines to high with a pull up resistor but the
+micro. But despite driving the mux select pins to high, the audio input signal to the final amplifier did not change.
+CHATGPT floated the possibility of Mux stuck in latched state and unable to be budged.
+
+Given the trouble we had in getting VCC switched to Booster IC, mux getting stuck at Aux input selection mode, and LED indicator
+not coming on (controlled by micro controller)  appears to land the blame on these three candidates. (Micro, Mux, XYKey) chips.
+Since they orchestrate the whole show of switching singals and controlling VCC, the micro must have browned out despite showing
+outward signs of being alive in some sense (providing 3.3v output) used by XYKey IC. 
+
+With time ticking,  I decided to cut my losses and decided to bypass control from all the above ICs, and feed the preamp
+output directly to the final amplifier. By this time I gained good understanding of audio signal levels required for clean sound
+output. Knowing this fix will bring the LP player to life, but will not resurrect other functionality like recording or playing back
+from USB, I fed the preamp signals directly to the amplifier. I
+
+###  Music To My Ears
+[![listen](https://i.sstatic.net/q3ceS.png)](https://youtube.com/shorts/5XMtKkJkuiA?feature=share" Everything Is AWESOME")
+
+With the above fix, I could enjoy the old Bengali songs with good sound which can be controlled. Given the Micro Processor used
+is proprietary I am not sure I could have done any better. In the end the whole exercise has been educational albeit with lot
+of strain on my eyes and neck. But it certainly kept my mind off the severe flu symptoms I had to endure during the whole time while
+on sick leave.  I hope my niece would enjoy using the device for all the effort that has gone into it.
