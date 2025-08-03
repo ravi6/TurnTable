@@ -10,7 +10,7 @@ is no power to the unit. I first opened up the unit to find the electronics in i
 is fairly modern with PCB that is significantly dense with SMD components.
 
 <img src="./figs/pcb.png" width=50%></img>
-<img src="./figs/underside.png" width=50%></img>
+<img src="./figs/underside.png" width=25%></img>
 
 ### Probing the PCB
 
