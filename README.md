@@ -76,7 +76,7 @@ a whispering of tune. Tried the volume knob to see if the volume changes but wit
 time? Something is disabling volume control.  Time to know all about other parts of the circuit.
 
 Overall the whole system consists of these components
-- 🟢 Boost converter 
+ 🟢 Boost converter 
        Provides higher voltage required to drive the DC motor to turn the LP
 - 🟢 Pre Amplifier
        Amplifies the low level sound signal from stylus to 100 to 200mv level
