@@ -1,9 +1,11 @@
 # TurnTable
 Reviving Retro Turntable
 
-### Preamble
-<img src="./figs/lp.png" width=50%></img>
 
+### Preamble
+<img src="./figs/lp.png" width=50% ></img>
+
+                                            
 I was asked if I could fix the above Turntable which refused to turn on and play 
 any records. At the start I thought it should be reasonably simple fix given there
 is no power to the unit. I first opened up the unit to find the electronics in it
@@ -12,7 +14,7 @@ is fairly modern with PCB that is significantly dense with SMD components.
 <img src="./figs/pcb.png" width=50%></img>
 <img src="./figs/underside.png" width=25%></img>
 
-### Probing the PCB
+### Probing The PCB
 
 Initial probing showed, despite the lack of turntable motion or led light there is 
 supply voltage (5VDC from the power plug) and some of the ICs do have their VCC at 5V.
@@ -21,7 +23,7 @@ marking clearly showed that it can be driven for 5V to 12VDC.  Winding resistenc
 normal with no shorts or open condition. But the motor was not getting no volts at all.
 So the problem is deeper than I originally imagined. 
 
-### Boost Converter the Culprit?
+### 🚀 Boost Converter The Culprit?
 If the cue arm is at either extreams of the platen the motor would cut out. So suspecting
 that there could be a broken link I dug deeper, dismantling the whole assembly and tracing all
 wiring from the cue arm, to the PCB. Eventually I traced back the wires to see if the motor 
@@ -36,6 +38,7 @@ of buck boost converters, the way this IC worked was not familiar to me. Once ag
 by hand to teach me how this device is configured to run. 
 
 <img src="./figs/boost.png" width=50%></img>
+
 A lot of time was spent tracing all the circuit related to this boost converter. It became clear
 that the main microprocessor (KP-3128 ... a proprietery micro) is responsible for
 pulsing excitation to enable boost converter to work. The oscillator of this IC was at the expected 
@@ -47,9 +50,9 @@ see things work well.   At this stage I still haven't understood some of the oth
 whose output is controlling the booster circuit. And I would regret this decision once I understood 
 rest of the circuit better (CHATGPT did not pick this up surprisingly). I later found the reason for the 
 VCC to not appear at pin 6. The culptrit was the signal form IC (XY ...) which would control if VCC would appear 
-at pin 6 by switching Q9, and Q7.
+at pin 6 by switching Q9, and Q7. (see ![schematics](./turntable.pdf))
 
-### A tedious Boost Converter Chip Replacement
+### A Tedious Boost Converter Chip Replacement
 And CHATGPT assuremed that there should be 5V supply there. And by
 forcing the pin to be at 5V the chip should work. At least then we can proceed further. It took me a week
 to get the chip. Meanwhile I proceeded to remove the IC. My very first attempt to deal with SMD components.
@@ -59,9 +62,10 @@ IC (which I could source locally without much wait ... about a week :)). It real
 stretched my skill set to solder the wires that are tiny to the pads so close. My soldering Iron was also
 a tad bigger for the job.But I finally winged it. Here is the result. I bought a glue gun and used hot glue
 to provide some stress relief. Not showing that picture as it was not so pretty a job.
+
 <img src="./figs/patch.png" width=50%></img>
 
-### It begins to Spin
+### It Begins To Spin
 I was certain that it would work once I have soldered the socket mounted IC externally. Alas, there was still
 no VCC signal on pin 6. My heart sank, for I seem to always do this. Remove the good stuff thinking it was dud.
 This ain't the first time. Does it ever happen to the pros? Anyway, another costly lesson not in terms of money
@@ -70,13 +74,13 @@ Now soldering a line from 5V line to the pin 6 of the chip the platen bigns to s
 motor terminal. I then proceed to check the rpm of the platen at all three speeds. 33, 45 rpms are as per spec.
 But the faster 72rpm could not be reached. But I was happy to let it go.
 
-### A faint Hope
+### A Faint Hope
 I then rushed to the sample record that was given to me and tried to listen to it. Yohoo ... I can hear
 a whispering of tune. Tried the volume knob to see if the volume changes but with no joy. So what is it this
 time? Something is disabling volume control.  Time to know all about other parts of the circuit.
 
 Overall the whole system consists of these components
- 🟢 Boost converter 
+- 🟢 Boost converter 
        Provides higher voltage required to drive the DC motor to turn the LP
 - 🟢 Pre Amplifier
        Amplifies the low level sound signal from stylus to 100 to 200mv level
@@ -91,3 +95,8 @@ Overall the whole system consists of these components
 - 🟢 XYKEY 
        Probably Buffering and Latching Digital IO chip controlled by Micro Processor
 
+### The Penny Drops In
+Took me a while to trace most of the circuit out and now have begun to understand that final amplifier IC 4863
+is not receiving the preamplified signal based on signals measured with oscilloscope. It appeared as though
+unamplified stylus signal is reaching. That aside, despite my several attempts to trace the input signal lines of
+the final amplifier chip to the source which should be the Mux chip output 
