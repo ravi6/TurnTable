@@ -10,6 +10,7 @@ is no power to the unit. I first opened up the unit to find the electronics in i
 is fairly modern with PCB that is significantly dense with SMD components.
 
 <img src="./figs/pcb.png" width=50%></img>
+<img src="./figs/underside.png" width=50%></img>
 
 ### Probing the PCB
 
@@ -34,6 +35,7 @@ measurements showed that there is about 0.5V to the turntable motor. While I hav
 of buck boost converters, the way this IC worked was not familiar to me. Once again CHATGPT led me 
 by hand to teach me how this device is configured to run. 
 
+<img src="./figs/boost.png" width=50%></img>
 A lot of time was spent tracing all the circuit related to this boost converter. It became clear
 that the main microprocessor (KP-3128 ... a proprietery micro) is responsible for
 pulsing excitation to enable boost converter to work. The oscillator of this IC was at the expected 
@@ -73,4 +75,19 @@ I then rushed to the sample record that was given to me and tried to listen to i
 a whispering of tune. Tried the volume knob to see if the volume changes but with no joy. So what is it this
 time? Something is disabling volume control.  Time to know all about other parts of the circuit.
 
+Overall the whole system consists of these components
+- 🟢 Boost converter 
+       Provides higher voltage required to drive the DC motor to turn the LP
+- 🟢 Pre Amplifier
+       Amplifies the low level sound signal from stylus to 100 to 200mv level
+- 🟢 Amplifer
+       Amplifies the signal from 100mv level to Voltage level signals to drive speakers
+- 🟢 Micro Processor
+       Controls boost converter, providing A/D conversion of audio signal to enable
+       USB recording of the sound source, controlling unit mode from recording to playback,
+       Channeling audio signal as per the mode selection switch.
+- 🟢 Mux 
+       Analogue signal switching
+- 🟢 XYKEY 
+       Probably Buffering and Latching Digital IO chip controlled by Micro Processor
 
