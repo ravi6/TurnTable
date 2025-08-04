@@ -102,3 +102,7 @@ In the end, the entire process was educational—though taxing on my eyes and ne
 ✅ Isolated the microcontroller’s failing influence  
 ✅ Verified audio chain integrity up to the final amplifier  
 ✅ Rewired the signal path for working volume control  
+
+### Acknowledgements
+Without useful feedback from ChatGPT at all stages of this project I would not have 
+achieved this result. It also helped polish this write up.
